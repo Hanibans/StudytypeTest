@@ -36,10 +36,10 @@
 
 <div class="page">
 
-  <form action = "result.html">
+  <form action = "result.html" method="post">
      <div id="form-header">
       <div id="anonymous-status">anonymous status goes here...</div>
-      <div id="progress-status">12/12</div>
+      <div id="progress-status">progress goes here</div>
      </div>
 
     <div class="questions carousel-viewport">
@@ -169,13 +169,33 @@
 
   const questionElms = document.querySelectorAll(".question");
   const progressElm = document.querySelector("#progress-status");
+  //udvælg alle radio buttons
+  const radios = document.querySelectorAll("input[type='radio']")
 
-  //løb igennem alle elementer og tilføj en eventListener, der lytter på click. Lad den kalde updateProgress
 
   function updateProgress(){
     let selectedNum = 0;
-    //løb alle elementer igennem og tæl hvor mange af dem der er blevet valgt
+
+    //løb alle questionElms elementer igennem
+    for (const q of questionElms) {
+      //for hvert question, vælg det input der eer blevet valgt
+      const selectedInputs = q.querySelector("input[type='radio']:checked");
+      if (selectedInputs) { //hvis denne er true, er der valgt noget
+        selectedNum++;
+      }
+    }
+
+
+    //tjek om der er blevet valgt
+    //tæl selectedNum op hvis der er
+
+
     progressElm.textContent = selectedNum +"/"+questionElms.length;
+
+    //løb igennem alle elementer og tilføj en eventListener, der lytter på click. Lad den kalde updateProgress
+    for(const r of radios){
+      r.addEventListener("click", updateProgress);
+    }
 
   }
 
