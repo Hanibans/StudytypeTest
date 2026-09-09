@@ -1,0 +1,168 @@
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+body{
+  font-family: Calibri, sans-serif;
+  background-color: var(--daylight);
+  color:var(--businessBlue);
+  font-size:18px;
+}
+
+header h1 {
+  justify-self: center;
+  margin: 0;
+}
+
+
+.options{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap:2em;
+}
+
+.logo {
+  width: 300px; /* or max-width for responsiveness */
+  height: auto; /* preserve aspect ratio */
+}
+
+.page {
+  max-width: 30em;
+  margin: 0 auto;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap:1em;
+}
+.textbox{
+
+  background-color:var(--sunlitEnergy);
+  border-radius: 12px;
+  padding: 20px;
+
+}
+.carousel-viewport{
+  display:flex;
+  overflow-x: auto;
+  gap:1em;
+  scroll-snap-type:x mandatory;
+
+}
+#form-header{
+  display:flex;
+  font-size: 10px;
+  font-style: italic;
+  justify-content:space-between;
+}
+
+.question {
+  margin: 1em 0;
+  /*flex: <flex-grow> <flex-shrink> <flex-basis>*/
+  flex: 0 0 100%;
+  scroll-snap-align: center;
+}
+
+.question-text {
+  padding-bottom: 2em;
+  font-weight: bold;
+  margin-bottom: 0.5em;
+}
+
+.option {
+  padding: 0.5em;
+
+  border: 2px solid var(--poolsideStudy);
+   color:var(--pencilGrey);
+   border-radius: 15px;
+
+   text-align: center;
+
+
+}
+
+
+.option:hover{
+  background-color: var(--poolsideStudyLight);
+  color:var(--pencilGrey);
+
+
+
+}
+
+.option:has(input:checked){
+  background-color: var(--poolsideStudy);
+  color:var(--daylight);
+}
+
+/*
+skjuler radiobutton grafikken
+*/
+.options input[type=radio]{
+   opacity: 0;
+}
+
+/*
+Sørger for at submit knappen er inaktiv indtil formularen er korrekt udfyldt.
+*/
+button[type="submit"]{
+  opacity: 0.5;
+  display: block;
+  width: 100%;
+  pointer-events: none;
+
+}
+form:valid button[type="submit"]{
+  opacity: 1;
+  pointer-events:auto;
+}
+
+/*
+Vi har to slags knapper som med få undtagelser deler styling.
+*/
+button, .button {
+  background-color: var(--notebook);
+  color:var(--daylight);
+  border-radius: 10px;
+  padding: 0.75em 2em;
+  font-size: 1.2em;
+  cursor: pointer;
+  /*start knappen på forsiden: et link som er stylet som en knap*/
+  text-decoration: none;/*fjerner understreget text som er default for links*/
+  /*submit knappen: et button element som er knyttet til form elementet*/
+  text-align: center;
+  border: none;/*fjerner knap slagskygge som er default for knapper */
+
+}
+
+@media (max-width: 700px) {
+  body{
+    font-size:16px;
+  }
+  .options {
+    grid-template-columns: 1fr 1fr;
+  }
+  header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.5em;
+  }
+}
+@media (max-width: 480px) {
+  body{
+    font-size:14px;
+  }
+  .options {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-height: 500px) and (orientation: landscape) {
+  body{
+    font-size:14px;
+  }
+  .logo { width: 150px; }
+  .question-text {
+    padding: 0.5em; }
+}
