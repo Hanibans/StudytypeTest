@@ -135,6 +135,21 @@ button, .button {
 
 }
 
+#Dyb {
+  background-color: var(--teamSpirit);
+  height: 30px;
+}
+
+#Overfladisk {
+  background-color: var(--studyBuddy);
+  height: 30px;
+}
+
+#Strategisk {
+  background-color: var(--mindfulBreak);
+  height: 30px;
+}
+
 @media (max-width: 700px) {
   body{
     font-size:16px;
